@@ -20,6 +20,8 @@ Any dog if close enough will eat from it if there is food inside it... if not th
 
 You can rename the dog bowl using an anvil to only allow dogs with the same name to eat from it.
 
+It will also display the name on the side of the dog bowl.
+
 ### Tennis Ball
 
 A little toy for a dog.
