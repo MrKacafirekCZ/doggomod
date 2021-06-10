@@ -66,5 +66,5 @@ From time to time a dog may scratch its ear.
 
 ## Requirements
 
-- Fabric
-- Fabric API
+- [Fabric](https://fabricmc.net/use/ "Fabric")
+- [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api "Fabric API")
