@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "tag": "doggomod:dog_bowl" },
+        { "item": "minecraft:pink_dye" }
+    ],
+    "result": {
+        "item": "doggomod:dog_bowl_pink",
+        "count": 1
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "tag": "doggomod:dog_bowl" },
+        { "item": "minecraft:light_gray_dye" }
+    ],
+    "result": {
+        "item": "doggomod:dog_bowl_lightgray",
+        "count": 1
+    }
+}

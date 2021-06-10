@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "doggomod",
+  "version": "${version}",
+
+  "name": "Doggo Mod",
+  "description": "Gives Minecraft's dogs (Tamed wolves) more things to do. Also adds dog bowls so dogs can eat whenever they want and a little tennis ball to play with.",
+  "authors": [
+    "MrKacafirekCZ"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "All rights reserved",
+  "icon": "assets/doggomod/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "mrkacafirekcz.doggomod.DoggoMod"
+    ],
+    "client": [
+      "mrkacafirekcz.doggomod.DoggoMod"
+    ]
+  },
+  "mixins": [
+    "doggomod.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
