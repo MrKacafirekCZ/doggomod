@@ -68,3 +68,7 @@ From time to time a dog may scratch its ear.
 
 - [Fabric](https://fabricmc.net/use/ "Fabric")
 - [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api "Fabric API")
+
+## Other
+
+This mod has been inspired by other mods (e.g. [Improved Wolves](https://mrcrayfish.com/mods?id=improvedwolves "Improved Wolves") by MrCrayfish)
