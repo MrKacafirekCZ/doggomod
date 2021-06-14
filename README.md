@@ -64,6 +64,16 @@ If you leave a dog sitting and walk a way, it will lay down and take a nap.
 
 From time to time a dog may scratch its ear.
 
+## Recipes
+
+### Dog Bowl
+
+![Imgur](https://imgur.com/oRQNaZp.jpg)
+
+### Tennis Ball
+
+![Imgur](https://imgur.com/IZG15Qq.jpg)
+
 ## Requirements
 
 - [Fabric](https://fabricmc.net/use/ "Fabric")
