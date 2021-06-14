@@ -4,6 +4,8 @@ Doggo Mod is a mod that changes the behavior of Minecraft dogs (tamed wolves) to
 
 It also adds dog bowls for a dog to eat from and a little tennis ball to play fetch.
 
+[Showcase](https://www.youtube.com/watch?v=CWsDT5YdyUA "Showcase")
+
 ![Imgur](https://imgur.com/E5kuQYb.jpg)
 
 ## Blocks and items
