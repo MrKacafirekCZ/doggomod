@@ -1,10 +1,15 @@
 package mrkacafirekcz.doggomod.client.render.entity.model;
 
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.util.math.MathHelper;
 
 public class DoggoWolfModelScratching extends DoggoWolfModel<DoggoWolf> {
 	
+	public DoggoWolfModelScratching(ModelPart root) {
+		super(root);
+	}
+
 	@Override
 	public void animateModel(DoggoWolf doggoWolf, float f, float g, float h) { 
 		if(doggoWolf.getScratchingSide() == 0) {
@@ -28,12 +33,12 @@ public class DoggoWolfModelScratching extends DoggoWolfModel<DoggoWolf> {
 		this.tail.setPivot(-0.2F, 21.0F, 4.5F);
 		this.tail.yaw = 0.8726646f;
 		this.tail.pitch = 1.3089969f;
-		this.rightBackLeg.setPivot(-2.5F, 22.7F, 2.0F);
-		this.rightBackLeg.yaw = -0.17453292f;
-		this.rightBackLeg.pitch = 4.712389F;
-		this.leftBackLeg.setPivot(1.1F, 22F, 1.6F);
-		this.leftBackLeg.yaw = -0.8726646f;
-		this.leftBackLeg.pitch = MathHelper.cos(doggoWolf.getAnimationTick() * 2.5f) * 0.15f - 2.26892802f;
+		this.rightHindLeg.setPivot(-2.5F, 22.7F, 2.0F);
+		this.rightHindLeg.yaw = -0.17453292f;
+		this.rightHindLeg.pitch = 4.712389F;
+		this.leftHindLeg.setPivot(1.1F, 22F, 1.6F);
+		this.leftHindLeg.yaw = -0.8726646f;
+		this.leftHindLeg.pitch = MathHelper.cos(doggoWolf.getAnimationTick() * 2.5f) * 0.15f - 2.26892802f;
 		this.rightFrontLeg.setPivot(-2.49F, 17.0F, -4.2F);
 		this.rightFrontLeg.yaw = 0.17453292f;
 		this.rightFrontLeg.pitch = 5.811947F;
@@ -56,12 +61,12 @@ public class DoggoWolfModelScratching extends DoggoWolfModel<DoggoWolf> {
 		this.tail.setPivot(-0.2F, 21.0F, 4.5F);
 		this.tail.yaw = -0.8726646f;
 		this.tail.pitch = 1.3089969f;
-		this.rightBackLeg.setPivot(-2.5F, 22.4F, 1.8F);
-		this.rightBackLeg.yaw = 0.8726646f;
-		this.rightBackLeg.pitch = MathHelper.cos(doggoWolf.getAnimationTick() * 2.5f) * 0.15f - 2.26892802f;
-		this.leftBackLeg.setPivot(0.5F, 22.7F, 2.0F);
-		this.leftBackLeg.yaw = 0.3490658f;
-		this.leftBackLeg.pitch = 4.712389F;
+		this.rightHindLeg.setPivot(-2.5F, 22.4F, 1.8F);
+		this.rightHindLeg.yaw = 0.8726646f;
+		this.rightHindLeg.pitch = MathHelper.cos(doggoWolf.getAnimationTick() * 2.5f) * 0.15f - 2.26892802f;
+		this.leftHindLeg.setPivot(0.5F, 22.7F, 2.0F);
+		this.leftHindLeg.yaw = 0.3490658f;
+		this.leftHindLeg.pitch = 4.712389F;
 		this.rightFrontLeg.setPivot(-2.49F, 17.0F, -3.0F);
 		this.rightFrontLeg.yaw = 0.5235987f;
 		this.rightFrontLeg.pitch = 5.811947F;

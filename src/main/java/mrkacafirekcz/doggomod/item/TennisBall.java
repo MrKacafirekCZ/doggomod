@@ -20,16 +20,16 @@ public class TennisBall extends Item {
 
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		ItemStack itemStack = user.getStackInHand(hand);
-		world.playSound((PlayerEntity) null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
+		world.playSound((PlayerEntity) null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
 		if (!world.isClient) {
 			TennisBallEntity tennisBallEntity = new TennisBallEntity(world, user);
 			tennisBallEntity.setItem(itemStack);
-			tennisBallEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
+			tennisBallEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
 			world.spawnEntity(tennisBallEntity);
 		}
 
 		user.incrementStat(Stats.USED.getOrCreateStat(this));
-		if (!user.abilities.creativeMode) {
+		if (!user.getAbilities().creativeMode) {
 			itemStack.decrement(1);
 		}
 

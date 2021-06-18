@@ -34,8 +34,8 @@ public class DogBowl extends BlockWithEntity implements BlockEntityProvider {
 	}
 
 	@Override
-	public BlockEntity createBlockEntity(BlockView world) {
-		return new DogBowlEntity();
+	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new DogBowlEntity(pos, state);
 	}
 	
 	@Override

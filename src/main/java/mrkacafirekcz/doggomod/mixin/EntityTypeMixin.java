@@ -7,13 +7,8 @@ import org.spongepowered.asm.mixin.injection.Slice;
 
 import mrkacafirekcz.doggomod.DoggoMod;
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 @Mixin(EntityType.class)
 public class EntityTypeMixin {
@@ -28,6 +23,6 @@ public class EntityTypeMixin {
             ordinal = 0)
     )
     private static <T extends Entity> EntityType<DoggoWolf> replaceWolf(String id, EntityType.Builder<T> type) {
-        return Registry.register(Registry.ENTITY_TYPE, new Identifier(DoggoMod.MODID, "wolf"), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, DoggoWolf::new).dimensions(EntityDimensions.fixed(0.6f, 0.85f)).build());
+        return DoggoMod.DOGGO;
     }
 }

@@ -23,7 +23,7 @@ public class DoggoBegGoal extends Goal {
 	      this.doggoWolf = doggoWolf;
 	      this.world = doggoWolf.world;
 	      this.begDistance = begDistance;
-	      this.validPlayerPredicate = (new TargetPredicate()).setBaseMaxDistance((double)begDistance).includeInvulnerable().includeTeammates().ignoreEntityTargetRules();
+	      this.validPlayerPredicate = TargetPredicate.createNonAttackable().setBaseMaxDistance((double)begDistance);
 	      this.setControls(EnumSet.of(Goal.Control.LOOK));
 	}
 
