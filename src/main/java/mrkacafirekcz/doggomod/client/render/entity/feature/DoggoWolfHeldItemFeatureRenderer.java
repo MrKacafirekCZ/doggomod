@@ -9,8 +9,8 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Vec3f;
 
 public class DoggoWolfHeldItemFeatureRenderer extends FeatureRenderer<DoggoWolf, DoggoWolfModel<DoggoWolf>> {
 	
@@ -32,20 +32,20 @@ public class DoggoWolfHeldItemFeatureRenderer extends FeatureRenderer<DoggoWolf,
 
 			matrixStack.translate((double) (((DoggoWolfModel) this.getContextModel()).head.pivotX / 16.0F), (double) (((DoggoWolfModel) this.getContextModel()).head.pivotY / 16.0F), (double) (((DoggoWolfModel) this.getContextModel()).head.pivotZ / 16.0F));
 			n = doggoWolf.getBegAnimationProgress(h) + doggoWolf.getShakeAnimationProgress(h, 0.0F);
-			matrixStack.multiply(Vector3f.POSITIVE_Z.getRadialQuaternion(n));
-			matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(k));
-			matrixStack.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(l));
+			matrixStack.multiply(Vec3f.POSITIVE_Z.getRadialQuaternion(n));
+			matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(k));
+			matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(l));
 			if(doggoWolf.isBaby()) {
 				matrixStack.translate(0.05999999865889549D, 0.25999999046325684D, -0.5D);
 			} else if(doggoWolf.isAction(DoggoAction.NAPPING)) {
 				matrixStack.translate(-0.28, 0.155, -0.30);
-				matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(50.0F));
+				matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(50.0F));
 			} else {
 				matrixStack.translate(-n * 0.1, 0.155, -0.4);
 			}
 
-			matrixStack.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90.0F));
-			matrixStack.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(-30.0F));
+			matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90.0F));
+			matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-30.0F));
 
 			ItemStack itemStack = doggoWolf.getStackInMouth();
 			MinecraftClient.getInstance().getHeldItemRenderer().renderItem(doggoWolf, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, i);

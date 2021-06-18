@@ -15,8 +15,9 @@ import mrkacafirekcz.doggomod.client.render.entity.model.DoggoWolfModelNeutral;
 import mrkacafirekcz.doggomod.client.render.entity.model.DoggoWolfModelScratching;
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
@@ -28,17 +29,17 @@ public class DoggoWolfRenderer extends MobEntityRenderer<DoggoWolf, DoggoWolfMod
 
 	private final Map<DoggoAction, DoggoWolfModel<DoggoWolf>> doggoModels = new HashMap<>();
 
-	public DoggoWolfRenderer(EntityRenderDispatcher entityRenderDispatcher) {
-		super(entityRenderDispatcher, new DoggoWolfModelNeutral(), 0.5F);
+	public DoggoWolfRenderer(EntityRendererFactory.Context context) {
+		super(context, new DoggoWolfModelNeutral(context.getPart(EntityModelLayers.WOLF)), 0.5F);
 		this.addFeature(new DoggoWolfCollarFeatureRenderer(this));
 		this.addFeature(new DoggoWolfHeldItemFeatureRenderer(this));
 
-		doggoModels.put(DoggoAction.DIGGING, new DoggoWolfModelDigging());
-		doggoModels.put(DoggoAction.EATING, new DoggoWolfModelNeutral());
-		doggoModels.put(DoggoAction.EATING_FROM_BOWL, new DoggoWolfModelEatingFromBowl());
-		doggoModels.put(DoggoAction.NAPPING, new DoggoWolfModelNapping());
-		doggoModels.put(DoggoAction.NEUTRAL, new DoggoWolfModelNeutral());
-		doggoModels.put(DoggoAction.SCRATCHING, new DoggoWolfModelScratching());
+		doggoModels.put(DoggoAction.DIGGING, new DoggoWolfModelDigging(context.getPart(EntityModelLayers.WOLF)));
+		doggoModels.put(DoggoAction.EATING, new DoggoWolfModelNeutral(context.getPart(EntityModelLayers.WOLF)));
+		doggoModels.put(DoggoAction.EATING_FROM_BOWL, new DoggoWolfModelEatingFromBowl(context.getPart(EntityModelLayers.WOLF)));
+		doggoModels.put(DoggoAction.NAPPING, new DoggoWolfModelNapping(context.getPart(EntityModelLayers.WOLF)));
+		doggoModels.put(DoggoAction.NEUTRAL, new DoggoWolfModelNeutral(context.getPart(EntityModelLayers.WOLF)));
+		doggoModels.put(DoggoAction.SCRATCHING, new DoggoWolfModelScratching(context.getPart(EntityModelLayers.WOLF)));
 	}
 
 	protected float getAnimationProgress(DoggoWolf wolfEntity, float f) {
