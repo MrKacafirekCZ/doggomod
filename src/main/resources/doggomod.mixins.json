@@ -4,8 +4,6 @@
   "package": "mrkacafirekcz.doggomod.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-  ],
-  "client": [
     "EntityTypeMixin",
     "WolfEntityMixin"
   ],

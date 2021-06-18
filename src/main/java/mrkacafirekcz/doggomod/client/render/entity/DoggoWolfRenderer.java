@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mrkacafirekcz.doggomod.DoggoAction;
-import mrkacafirekcz.doggomod.DoggoMod;
 import mrkacafirekcz.doggomod.client.render.entity.feature.DoggoWolfCollarFeatureRenderer;
 import mrkacafirekcz.doggomod.client.render.entity.feature.DoggoWolfHeldItemFeatureRenderer;
 import mrkacafirekcz.doggomod.client.render.entity.model.DoggoWolfModel;
@@ -24,7 +23,11 @@ public class DoggoWolfRenderer extends MobEntityRenderer<DoggoWolf, DoggoWolfMod
 	private static final Identifier WILD_TEXTURE = new Identifier("textures/entity/wolf/wolf.png");
 	private static final Identifier TAMED_TEXTURE = new Identifier("textures/entity/wolf/wolf_tame.png");
 	private static final Identifier ANGRY_TEXTURE = new Identifier("textures/entity/wolf/wolf_angry.png");
-	private static final Identifier SLEEPING_TEXTURE = new Identifier(DoggoMod.MODID, "textures/entity/wolf/wolf_sleeping.png");
+	
+	/**
+	 * Due to Optifine I had to do it through id 'minecraft'
+	 */
+	private static final Identifier SLEEPING_TEXTURE = new Identifier("textures/entity/wolf/wolf_sleeping.png");
 
 	private final Map<DoggoAction, DoggoWolfModel<DoggoWolf>> doggoModels = new HashMap<>();
 
