@@ -1,9 +1,14 @@
 package mrkacafirekcz.doggomod.client.render.entity.model;
 
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
+import net.minecraft.client.model.ModelPart;
 
 public class DoggoWolfModelNapping extends DoggoWolfModel<DoggoWolf> {
 	
+	public DoggoWolfModelNapping(ModelPart root) {
+		super(root);
+	}
+
 	@Override
 	public void animateModel(DoggoWolf doggoWolf, float f, float g, float h) {
 		if(doggoWolf.isBaby()) {
@@ -29,11 +34,11 @@ public class DoggoWolfModelNapping extends DoggoWolfModel<DoggoWolf> {
 		this.leftFrontLeg.setPivot(0.5F, 23.0F, -4.0F);
 		this.leftFrontLeg.yaw = 0.17453292f;
 		this.leftFrontLeg.pitch = -1.57079632f;
-		this.rightBackLeg.setPivot(-2.5F, 23.0F, 7.0F);
-		this.rightBackLeg.yaw = 1.04719755f;
-		this.rightBackLeg.pitch = -1.57079632f;
-		this.leftBackLeg.setPivot(0.5F, 23.0F, 7.0F);
-		this.leftBackLeg.yaw = 0.87266462f;
-		this.leftBackLeg.pitch = -1.57079632f;
+		this.rightHindLeg.setPivot(-2.5F, 23.0F, 7.0F);
+		this.rightHindLeg.yaw = 1.04719755f;
+		this.rightHindLeg.pitch = -1.57079632f;
+		this.leftHindLeg.setPivot(0.5F, 23.0F, 7.0F);
+		this.leftHindLeg.yaw = 0.87266462f;
+		this.leftHindLeg.pitch = -1.57079632f;
 	}
 }

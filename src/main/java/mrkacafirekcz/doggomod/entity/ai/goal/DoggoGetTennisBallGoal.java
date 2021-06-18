@@ -6,6 +6,7 @@ import java.util.List;
 import mrkacafirekcz.doggomod.DoggoAction;
 import mrkacafirekcz.doggomod.DoggoMod;
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
+import net.minecraft.entity.Entity.RemovalReason;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.ai.goal.Goal;
 
@@ -58,7 +59,7 @@ public class DoggoGetTennisBallGoal extends Goal {
 	
 	@Override
 	public boolean canStop() {
-		return this.doggoWolf.hasBeenDamaged() || this.entity == null || this.entity.removed;
+		return this.doggoWolf.hasBeenDamaged() || this.entity == null || this.entity.isRemoved();
 	}
 
 	@Override
@@ -75,7 +76,7 @@ public class DoggoGetTennisBallGoal extends Goal {
 	
 	@Override
 	public void tick() {
-		if(this.entity != null && !this.entity.removed) {
+		if(this.entity != null && !this.entity.isRemoved()) {
 			if(this.doggoWolf.squaredDistanceTo(entity) < 3) {
 				this.doggoWolf.getNavigation().stop();
 				
@@ -84,7 +85,7 @@ public class DoggoGetTennisBallGoal extends Goal {
 				}
 				
 				this.doggoWolf.setStackInMouth(this.entity.getStack());
-				this.entity.remove();
+				this.entity.remove(RemovalReason.KILLED);
 				this.entity = null;
 				this.doggoWolf.getNavigation().startMovingTo(this.doggoWolf.getOwner(), 1);
 			} else if(this.doggoWolf.getNavigation().isIdle()) {
