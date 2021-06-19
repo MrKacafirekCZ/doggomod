@@ -6,7 +6,7 @@ It also adds dog bowls for a dog to eat from and a little tennis ball to play fe
 
 [Showcase](https://www.youtube.com/watch?v=CWsDT5YdyUA "Showcase")
 
-**Warning! Currently this mod works only in Singleplayer and I don't know if it will ever work in Multiplayer. Issues that I'm running into are very weird and difficult to fix.**
+**Warning! Currently this mod only works in Singleplayer and I don't know if it will ever work in Multiplayer. Issues that I'm running into are very weird and difficult to fix.**
 
 ![Imgur](https://imgur.com/E5kuQYb.jpg)
 
