@@ -8,6 +8,10 @@ It also adds dog bowls for a dog to eat from and a little tennis ball to play fe
 
 **Warning! Currently this mod only works in Singleplayer and I don't know if it will ever work in Multiplayer. Issues that I'm running into are very weird and difficult to fix.**
 
+#### Update (January 28th 2022): Long story short, it has proven to be a much more difficult task to update this mod. **I'm not marking this mod as discontinued** but it's going to be some time before I update it again to newer versions. I want to get back to this once I have some time and motivation.
+
+#### Update (December 3th 2021): 1.18 version is planned for Doggo Mod but it's probably gonna take some time
+
 ![Imgur](https://imgur.com/E5kuQYb.jpg)
 
 ## Blocks and items
