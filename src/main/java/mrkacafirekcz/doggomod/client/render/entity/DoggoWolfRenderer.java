@@ -26,9 +26,9 @@ public class DoggoWolfRenderer extends MobEntityRenderer<DoggoWolf, DoggoWolfMod
 	private static final Identifier ANGRY_TEXTURE = new Identifier("textures/entity/wolf/wolf_angry.png");
 	
 	/**
-	 * Due to Optifine I had to do it through id 'minecraft'
+	 * Optifine, more like OptiCOARSE!
 	 */
-	private static final Identifier SLEEPING_TEXTURE = new Identifier("textures/entity/wolf/wolf_sleeping.png");
+	private static final Identifier SLEEPING_TEXTURE = new Identifier("doggomod:textures/entity/wolf/wolf_sleeping.png");
 
 	private final Map<DoggoAction, DoggoWolfModel<DoggoWolf>> doggoModels = new HashMap<>();
 

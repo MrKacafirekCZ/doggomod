@@ -1,14 +1,11 @@
 package mrkacafirekcz.doggomod.entity.projectile.thrown;
 
 import mrkacafirekcz.doggomod.DoggoMod;
-import mrkacafirekcz.doggomod.DoggoModClient;
-import mrkacafirekcz.doggomod.EntitySpawnPacket;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.network.Packet;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -55,8 +52,8 @@ public class TennisBallEntity extends ThrownItemEntity {
 		return DoggoMod.TENNIS_BALL;
 	}
 	
-	@Override
-	public Packet<?> createSpawnPacket() {
-		return EntitySpawnPacket.create(this, DoggoModClient.PacketID);
-	}
+//	@Override
+//	public Packet<?> createSpawnPacket() {
+//		return EntitySpawnPacket.create(this, DoggoModClient.PacketID);
+//	}
 }

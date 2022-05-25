@@ -1,25 +1,28 @@
 package mrkacafirekcz.doggomod.client.render.block.entity;
 
 import mrkacafirekcz.doggomod.block.entity.DogBowlEntity;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 
-public class DogBowlBlockEntityRenderer implements BlockEntityRenderer<DogBowlEntity> {
+public class DogBowlBlockEntityRenderer<T extends BlockEntity> implements BlockEntityRenderer<DogBowlEntity> {
 
-	private final ItemRenderer itemRenderer;
-	private final TextRenderer textRenderer;
+	private final ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+	private final TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
 	
-	public DogBowlBlockEntityRenderer(ItemRenderer itemRenderer, TextRenderer textRenderer) {
-		this.itemRenderer = itemRenderer;
-		this.textRenderer = textRenderer;
+	public DogBowlBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+
 	}
 	
 	@Override
@@ -36,12 +39,12 @@ public class DogBowlBlockEntityRenderer implements BlockEntityRenderer<DogBowlEn
 			for(int i = 0; i < 4; i++) {
 				matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float) 90));
 				matrixStack.translate(-65.8, 0, -0.37);
-				this.textRenderer.draw(name, centerX, centerY, NativeImage.getAbgrColor(0, 255, 255, 255), false, matrixStack.peek().getModel(), vertexConsumerProvider, false, 0, light);
+				this.textRenderer.draw(name, centerX, centerY, NativeImage.getAlpha(255), false, matrixStack.peek().getPositionMatrix(), vertexConsumerProvider, false, 0, light);
 			}
 			matrixStack.pop();
 		}
 
-		if(entity.getStack(0) != null && !entity.getStack(0).isEmpty()) {
+		if(entity.hasFood()) {
 			int amount = MathHelper.ceil(entity.getStack(0).getCount() / 16D);
 
 			matrixStack.push();
@@ -57,4 +60,6 @@ public class DogBowlBlockEntityRenderer implements BlockEntityRenderer<DogBowlEn
 			matrixStack.pop();
 		}
 	}
+
+
 }

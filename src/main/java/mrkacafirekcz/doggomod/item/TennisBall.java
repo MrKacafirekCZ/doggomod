@@ -24,7 +24,7 @@ public class TennisBall extends Item {
 		if (!world.isClient) {
 			TennisBallEntity tennisBallEntity = new TennisBallEntity(world, user);
 			tennisBallEntity.setItem(itemStack);
-			tennisBallEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+			tennisBallEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
 			world.spawnEntity(tennisBallEntity);
 		}
 

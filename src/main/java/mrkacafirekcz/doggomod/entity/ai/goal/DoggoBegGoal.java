@@ -61,7 +61,7 @@ public class DoggoBegGoal extends Goal {
 	}
 
 	public void tick() {
-		this.doggoWolf.getLookControl().lookAt(this.begFrom.getX(), this.begFrom.getEyeY(), this.begFrom.getZ(), 10.0F, (float) this.doggoWolf.getLookPitchSpeed());
+		this.doggoWolf.getLookControl().lookAt(this.begFrom.getX(), this.begFrom.getEyeY(), this.begFrom.getZ(), 10.0F, (float) this.doggoWolf.getMaxLookPitchChange());
 		--this.timer;
 	}
 

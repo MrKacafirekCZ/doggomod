@@ -1,11 +1,8 @@
 package mrkacafirekcz.doggomod.block.entity;
 
-import org.jetbrains.annotations.Nullable;
-
 import mrkacafirekcz.doggomod.DoggoMod;
 import mrkacafirekcz.doggomod.inventory.ImplementedInventory;
 import mrkacafirekcz.doggomod.screen.DogBowlScreenHandler;
-import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,16 +10,22 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Nameable;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory, BlockEntityClientSerializable, ScreenHandlerListener, Nameable {
+public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory,  ScreenHandlerListener, Nameable {
 
 	private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 	private Text customName;
@@ -47,6 +50,7 @@ public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFact
 	public Text getDisplayName() {
 		return this.getName();
 	}
+
 	
 	public int getFoodHunger() {
 		if(items.get(0) != null && !items.get(0).isEmpty() && items.get(0).getItem().isFood()) {
@@ -56,10 +60,12 @@ public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFact
 		return 0;
 	}
 
+
 	@Override
 	public DefaultedList<ItemStack> getItems() {
 		return items;
 	}
+
 
 	public Text getName() {
 		return this.customName != null ? new LiteralText(this.customName.asString() + "'s Dog Bowl") : new LiteralText("Dog Bowl");
@@ -68,29 +74,29 @@ public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFact
 	public void foodEaten() {
 		if(items.get(0) != null && !items.get(0).isEmpty()) {
 			items.get(0).decrement(1);
-			sync();
+			markDirty();
 		}
 	}
 	
 	@Override
 	public void readNbt(NbtCompound nbt) {
-		super.readNbt(nbt);
+		items.clear();
 		Inventories.readNbt(nbt, items);
 		if(nbt.contains("CustomName", 8)) {
 			this.customName = Text.Serializer.fromJson(nbt.getString("CustomName"));
 		}
+		markDirty();
 	}
 	
 	@Override
-	public NbtCompound writeNbt(NbtCompound nbt) {
-		nbt = super.writeNbt(nbt);
+	public void writeNbt(NbtCompound nbt) {
 		nbt = Inventories.writeNbt(nbt, items);
 		if(this.customName != null) {
 			nbt.putString("CustomName", Text.Serializer.toJson(this.customName));
 		}
-		return nbt;
 	}
-	
+
+
 	public boolean hasCustomName() {
 		return this.customName != null;
 	}
@@ -103,35 +109,57 @@ public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFact
 		this.customName = customName;
 	}
 
+//	public void fromClientTag(NbtCompound nbt) {
+//		DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
+//
+//		Inventories.readNbt(nbt, items);
+//
+//		for(int i = 0; i < this.items.size(); i++) {
+//			this.items.set(i, items.get(i));
+//		}
+//
+//		if(nbt.contains("CustomName", 8)) {
+//			this.customName = Text.Serializer.fromJson(nbt.getString("CustomName"));
+//		}
+//	}
+
+
+
+	@Nullable
 	@Override
-	public void fromClientTag(NbtCompound nbt) {
-		DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
-		
-		Inventories.readNbt(nbt, items);
-		
-		for(int i = 0; i < this.items.size(); i++) {
-			this.items.set(i, items.get(i));
-		}
-		
-		if(nbt.contains("CustomName", 8)) {
-			this.customName = Text.Serializer.fromJson(nbt.getString("CustomName"));
-		}
+	public Packet<ClientPlayPacketListener> toUpdatePacket() {
+		return BlockEntityUpdateS2CPacket.create(this);
 	}
 
 	@Override
-	public NbtCompound toClientTag(NbtCompound nbt) {
-		return writeNbt(nbt);
+	public NbtCompound toInitialChunkDataNbt() {
+		return createNbt();
 	}
+
+	@Override
+	public void markDirty() {
+		if (this.world != null) {
+			markDirtyInWorld(this.world, this.pos, this.getCachedState());
+		}
+	}
+
+	protected void markDirtyInWorld(World world, BlockPos pos, BlockState state) {
+		world.markDirty(pos);
+		if (!world.isClient()) {
+			((ServerWorld) world).getChunkManager().markForUpdate(pos); // Mark changes to be synced to the client.
+		}
+	}
+
 
 	@Override
 	public void onSlotUpdate(ScreenHandler handler, int slotId, ItemStack stack) {
 		if(slotId == 0) {
-			sync();
+
 		}
 	}
 
 	@Override
 	public void onPropertyUpdate(ScreenHandler handler, int property, int value) {
-		
+
 	}
 }
