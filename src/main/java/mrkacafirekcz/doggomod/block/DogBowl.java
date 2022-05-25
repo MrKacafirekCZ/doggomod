@@ -1,5 +1,6 @@
 package mrkacafirekcz.doggomod.block;
 
+import mrkacafirekcz.doggomod.DoggoMod;
 import mrkacafirekcz.doggomod.block.entity.DogBowlEntity;
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -11,6 +12,9 @@ import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.CampfireBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -24,6 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class DogBowl extends BlockWithEntity implements BlockEntityProvider {
 	
@@ -55,7 +60,8 @@ public class DogBowl extends BlockWithEntity implements BlockEntityProvider {
 	public boolean hasComparatorOutput(BlockState state) {
 		return true;
 	}
-	
+
+
 	@Override
 	public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
 		if(state.getBlock() != newState.getBlock()) {
