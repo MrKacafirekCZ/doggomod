@@ -35,7 +35,7 @@ public class DogBowl extends BlockWithEntity implements BlockEntityProvider {
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(2.5, 0.0, 2.5, 13.5, 4.0, 13.5);
 	
 	public DogBowl() {
-		super(FabricBlockSettings.of(Material.STONE).strength(2.0f).requiresTool());
+		super(Settings.of(Material.METAL).requiresTool().strength(1.5f, 4.0f));
 	}
 
 	@Override
