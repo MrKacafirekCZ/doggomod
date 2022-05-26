@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "doggomod:dog_bowl_black",
+    "doggomod:dog_bowl_blue",
+    "doggomod:dog_bowl_brown",
+    "doggomod:dog_bowl_cyan",
+    "doggomod:dog_bowl_gray",
+    "doggomod:dog_bowl_green",
+    "doggomod:dog_bowl_lightblue",
+    "doggomod:dog_bowl_lightgray",
+    "doggomod:dog_bowl_lime",
+    "doggomod:dog_bowl_magenta",
+    "doggomod:dog_bowl_orange",
+    "doggomod:dog_bowl_pink",
+    "doggomod:dog_bowl_purple",
+    "doggomod:dog_bowl_red",
+    "doggomod:dog_bowl_white",
+    "doggomod:dog_bowl_yellow"
+  ]
+}
