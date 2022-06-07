@@ -107,7 +107,7 @@ public class DogBowl extends BlockWithEntity implements BlockEntityProvider {
 			DogBowlEntity dogBowlEntity = (DogBowlEntity) wolfEntity.world.getBlockEntity(pos);
 			
 			if(dogBowlEntity.hasCustomName()) {
-				if(wolfEntity.hasCustomName() && wolfEntity.getDisplayName().asString().equals(dogBowlEntity.getCustomName().asString())) {
+				if(wolfEntity.hasCustomName() && wolfEntity.getDisplayName().getContent().equals(dogBowlEntity.getCustomName().getContent())) {
 					return true;
 				}
 				

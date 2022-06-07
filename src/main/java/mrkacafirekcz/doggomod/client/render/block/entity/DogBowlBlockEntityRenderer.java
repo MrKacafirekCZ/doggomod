@@ -28,7 +28,7 @@ public class DogBowlBlockEntityRenderer<T extends BlockEntity> implements BlockE
 	@Override
 	public void render(DogBowlEntity entity, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
 		if(entity.hasCustomName()) {
-			String name = textRenderer.trimToWidth(entity.getCustomName().asString(), 66);
+			String name = textRenderer.trimToWidth(entity.getCustomName().getString(), 66);
 			float centerX = (66f - textRenderer.getWidth(name)) / 2f;
 			float centerY = 5.5f;
 

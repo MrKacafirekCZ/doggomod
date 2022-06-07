@@ -17,8 +17,9 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextContent;
 import net.minecraft.util.Nameable;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -68,7 +69,7 @@ public class DogBowlEntity extends BlockEntity implements NamedScreenHandlerFact
 
 
 	public Text getName() {
-		return this.customName != null ? new LiteralText(this.customName.asString() + "'s Dog Bowl") : new LiteralText("Dog Bowl");
+		return this.customName != null ? Text.of(this.customName.getContent() + "'s Dog Bowl") : Text.of("Dog Bowl");
 	}
 	
 	public void foodEaten() {
