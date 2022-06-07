@@ -1,7 +1,7 @@
 package mrkacafirekcz.doggomod;
 
 import io.netty.buffer.Unpooled;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+//import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
@@ -12,7 +12,7 @@ import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("deprecation")
 public class EntitySpawnPacket {
-	
+	/*
 	public static Packet<?> create(Entity e, Identifier packetID) {
 		if (e.world.isClient)
 			throw new IllegalStateException("SpawnPacketUtil.create called on the logical client!");
@@ -25,7 +25,7 @@ public class EntitySpawnPacket {
 		PacketBufUtil.writeAngle(byteBuf, e.getPitch());
 		PacketBufUtil.writeAngle(byteBuf, e.getYaw());
 		return ServerSidePacketRegistry.INSTANCE.toPacket(packetID, byteBuf);
-	}
+	}*/
 	
 	public static final class PacketBufUtil {
  

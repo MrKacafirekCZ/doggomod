@@ -4,6 +4,7 @@ import mrkacafirekcz.doggomod.DoggoAction;
 import mrkacafirekcz.doggomod.client.render.entity.model.DoggoWolfModel;
 import mrkacafirekcz.doggomod.entity.DoggoWolf;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
@@ -48,7 +49,7 @@ public class DoggoWolfHeldItemFeatureRenderer extends FeatureRenderer<DoggoWolf,
 			matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-30.0F));
 
 			ItemStack itemStack = doggoWolf.getStackInMouth();
-			MinecraftClient.getInstance().getHeldItemRenderer().renderItem(doggoWolf, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, i);
+			MinecraftClient.getInstance().getItemRenderer().renderItem(itemStack, ModelTransformation.Mode.GROUND, i, OverlayTexture.DEFAULT_UV, matrixStack, vertexConsumerProvider, doggoWolf.getId());
 			matrixStack.pop();
 		}
 	}
